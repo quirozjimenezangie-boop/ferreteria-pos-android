@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_light"
+    android:padding="@dimen/spacing_lg">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardLoginContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxWidth="440dp"
+        app:cardBackgroundColor="@color/surface_white"
+        app:cardCornerRadius="@dimen/corner_radius_md"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_lg">
+
+            <TextView
+                android:id="@+id/tvLoginBrand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textColor="@color/graphite_dark"
+                android:textSize="@dimen/text_title"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvLoginHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:text="Inicio de Sesión"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_body" />
+
+            <!-- Campo Usuario -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUsername"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:hint="Usuario">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Campo de texto para ingresar usuario"
+                    android:inputType="text"
+                    android:minHeight="@dimen/touch_target_min"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/text_body" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo Contraseña -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPassword"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:hint="Contraseña"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Campo de texto para ingresar contraseña"
+                    android:inputType="textPassword"
+                    android:minHeight="@dimen/touch_target_min"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/text_body" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Botón Ingresar -->
+            <Button
+                android:id="@+id/btnLoginSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/cta_button_height"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:backgroundTint="@color/industrial_orange"
+                android:contentDescription="Botón ingresar al sistema"
+                android:text="Ingresar"
+                android:textColor="@color/surface_white"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold" />
+
+            <!-- Enlace a Registro -->
+            <TextView
+                android:id="@+id/tvGoToRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:contentDescription="Ir a registro de usuario"
+                android:gravity="center"
+                android:minHeight="@dimen/touch_target_min"
+                android:paddingHorizontal="@dimen/spacing_sm"
+                android:text="¿No tienes cuenta? Regístrate"
+                android:textColor="@color/graphite_dark"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
