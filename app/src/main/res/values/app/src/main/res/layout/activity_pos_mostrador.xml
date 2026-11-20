@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_light">
+
+    <!-- Barra superior del mostrador -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBarPos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/touch_target_min"
+        android:background="@color/graphite_dark"
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:paddingVertical="@dimen/spacing_sm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvPosTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_pos"
+            android:textColor="@color/surface_white"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvCashierBadge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCashierBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/industrial_orange"
+            android:paddingHorizontal="@dimen/spacing_sm"
+            android:paddingVertical="@dimen/spacing_xs"
+            android:text="@string/cashier_label"
+            android:textColor="@color/surface_white"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Búsqueda por SKU o código de barras -->
+    <LinearLayout
+        android:id="@+id/searchSkuRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/surface_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_sm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBarPos">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSkuInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_sm"
+            android:layout_weight="1"
+            android:hint="@string/sku_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSkuCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Ingresar o escanear código SKU del producto"
+                android:inputType="textCapCharacters"
+                android:minHeight="@dimen/touch_target_min"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_body" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnAddProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/touch_target_min"
+            android:backgroundTint="@color/industrial_orange"
+            android:contentDescription="Agregar producto a la venta"
+            android:minWidth="104dp"
+            android:text="@string/btn_add"
+            android:textColor="@color/surface_white"
+            android:textSize="@dimen/text_body"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Encabezado detalle de venta -->
+    <TextView
+        android:id="@+id/tvCartHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:paddingTop="@dimen/spacing_sm"
+        android:paddingBottom="@dimen/spacing_xs"
+        android:text="@string/cart_title"
+        android:textColor="@color/graphite_dark"
+        android:textSize="@dimen/text_body"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchSkuRow" />
+
+    <!-- Lista de ítems de la venta actual -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSaleItems"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:contentDescription="Lista de productos agregados a la venta actual"
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:paddingBottom="@dimen/spacing_sm"
+        app:layout_constraintBottom_toTopOf="@+id/summaryCardPos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCartHeader" />
+
+    <!-- Panel inferior de resumen y cobro -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/summaryCardPos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/surface_white"
+        app:cardCornerRadius="@dimen/corner_radius_md"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_md">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/summary_title"
+                android:textColor="@color/graphite_dark"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold" />
+
+            <!-- Subtotal -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/subtotal_label"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_body" />
+
+                <TextView
+                    android:id="@+id/tvSubtotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$21,008"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/text_body"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- IVA 19% -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/iva_label"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_body" />
+
+                <TextView
+                    android:id="@+id/tvIvaAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$3,992"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/text_body"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Total a pagar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/total_label"
+                    android:textColor="@color/graphite_dark"
+                    android:textSize="@dimen/text_title"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTotalPayable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$25,000"
+                    android:textColor="@color/success_green"
+                    android:textSize="@dimen/text_total_amount"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Botón principal COBRAR (F1) -->
+            <Button
+                android:id="@+id/btnChargeSale"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/cta_button_height"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:backgroundTint="@color/success_green"
+                android:contentDescription="Cobrar la venta actual"
+                android:text="@string/btn_charge"
+                android:textColor="@color/surface_white"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold" />
+
+            <!-- Botón secundario Cancelar Venta -->
+            <Button
+                android:id="@+id/btnCancelSale"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/touch_target_min"
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:contentDescription="Cancelar la venta en curso"
+                android:text="@string/btn_cancel_sale"
+                android:textColor="@color/technical_red"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
