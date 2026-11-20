@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_light"
+    android:padding="@dimen/spacing_lg">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAlertContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxWidth="440dp"
+        app:cardBackgroundColor="@color/surface_white"
+        app:cardCornerRadius="@dimen/corner_radius_md"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_lg">
+
+            <TextView
+                android:id="@+id/tvAlertBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/technical_red"
+                android:contentDescription="Indicador de alerta o error crítico"
+                android:paddingHorizontal="@dimen/spacing_md"
+                android:paddingVertical="@dimen/spacing_xs"
+                android:text="ALERTA DEL SISTEMA"
+                android:textColor="@color/surface_white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAlertTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:gravity="center"
+                android:text="Error de Conexión o Stock"
+                android:textColor="@color/graphite_dark"
+                android:textSize="@dimen/text_title"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAlertMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:gravity="center"
+                android:text="No se pudo completar la operación solicitada. Verifica la disponibilidad del producto o intenta nuevamente."
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_body" />
+
+            <Button
+                android:id="@+id/btnRetryAction"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/cta_button_height"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:backgroundTint="@color/industrial_orange"
+                android:contentDescription="Reintentar la operación"
+                android:text="Reintentar"
+                android:textColor="@color/surface_white"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnBackToPos"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/touch_target_min"
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:contentDescription="Volver al mostrador principal"
+                android:text="Volver al Mostrador"
+                android:textColor="@color/graphite_dark"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
