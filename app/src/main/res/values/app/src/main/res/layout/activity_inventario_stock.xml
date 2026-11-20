@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_light">
+
+    <!-- Barra superior de Inventario y Stock -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBarInventory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/touch_target_min"
+        android:background="@color/graphite_dark"
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:paddingVertical="@dimen/spacing_sm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvInventoryTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_inventory"
+            android:textColor="@color/surface_white"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Buscador y botón Nuevo Producto -->
+    <LinearLayout
+        android:id="@+id/inventoryToolbarRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/surface_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_sm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBarInventory">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSearchInventory"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_sm"
+            android:layout_weight="1"
+            android:hint="Buscar por nombre o SKU...">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSearchInventory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Buscar producto en el inventario por nombre o SKU"
+                android:inputType="text"
+                android:minHeight="@dimen/touch_target_min"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_body" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnNewProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/touch_target_min"
+            android:backgroundTint="@color/industrial_orange"
+            android:contentDescription="Agregar nuevo producto al inventario"
+            android:text="+ Nuevo"
+            android:textColor="@color/surface_white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Listado de productos en inventario -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvInventoryProducts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:contentDescription="Listado de productos del inventario y estado de stock"
+        android:padding="@dimen/spacing_md"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inventoryToolbarRow" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
