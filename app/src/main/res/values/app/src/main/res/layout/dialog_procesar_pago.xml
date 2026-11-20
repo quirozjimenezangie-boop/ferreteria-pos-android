@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_md"
+    app:cardBackgroundColor="@color/surface_white"
+    app:cardCornerRadius="@dimen/corner_radius_md"
+    app:cardElevation="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Cabecera oscura del modal -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/touch_target_min"
+            android:background="@color/graphite_dark"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:paddingVertical="@dimen/spacing_sm">
+
+            <TextView
+                android:id="@+id/tvDialogPaymentTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Procesar Pago"
+                android:textColor="@color/surface_white"
+                android:textSize="@dimen/text_title"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnClosePaymentDialog"
+                android:layout_width="@dimen/touch_target_min"
+                android:layout_height="@dimen/touch_target_min"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Cerrar ventana de pago"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                app:tint="@color/surface_white" />
+        </LinearLayout>
+
+        <!-- Cuerpo del formulario de cobro -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_md">
+
+            <!-- Recuadro monto total -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/surface_light"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_md">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MONTO TOTAL"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPaymentTotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs"
+                    android:text="$25,000"
+                    android:textColor="@color/success_green"
+                    android:textSize="@dimen/text_total_amount"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Método de pago -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:text="Método de Pago"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spPaymentMethod"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/touch_target_min"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:background="@android:drawable/btn_dropdown"
+                android:contentDescription="Seleccionar método de pago"
+                android:minHeight="@dimen/touch_target_min" />
+
+            <!-- Efectivo recibido y cambio -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilCashReceived"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_sm"
+                    android:layout_weight="1"
+                    android:hint="Efectivo Recibido">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCashReceived"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="Ingresar monto en efectivo recibido"
+                        android:inputType="numberDecimal"
+                        android:minHeight="@dimen/touch_target_min"
+                        android:text="50000"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/text_body" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_sm"
+                    android:layout_weight="1"
+                    android:background="@color/surface_light"
+                    android:minHeight="@dimen/touch_target_min"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_sm">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cambio / Devuelta"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvChangeAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_xs"
+                        android:text="$25,000"
+                        android:textColor="@color/success_green"
+                        android:textSize="@dimen/text_title"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Botones de acción -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCancelPayment"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/touch_target_min"
+                    android:layout_marginEnd="@dimen/spacing_sm"
+                    android:contentDescription="Cancelar cobro"
+                    android:text="Cancelar"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/text_body" />
+
+                <Button
+                    android:id="@+id/btnConfirmPrintTicket"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/cta_button_height"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/success_green"
+                    android:contentDescription="Confirmar pago e imprimir tiquete"
+                    android:text="Confirmar e Imprimir Tiquete"
+                    android:textColor="@color/surface_white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
