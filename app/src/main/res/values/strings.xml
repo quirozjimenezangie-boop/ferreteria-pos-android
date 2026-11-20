@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ferretería Central - POS</string>
+    <string name="cashier_label">Cajero: Ana López</string>
+    <string name="tab_pos">Mostrador POS</string>
+    <string name="tab_inventory">Inventario &amp; Stock</string>
+    <string name="tab_reports">Reportes</string>
+    <string name="sku_hint">Escanee o ingrese código (Ej: TORN-38)...</string>
+    <string name="btn_add">+ Agregar</string>
+    <string name="cart_title">Detalle de la Venta Actual</string>
+    <string name="summary_title">Resumen de Cuenta</string>
+    <string name="subtotal_label">Subtotal:</string>
+    <string name="iva_label">IVA (19%):</string>
+    <string name="total_label">TOTAL A PAGAR</string>
+    <string name="btn_charge">COBRAR (F1)</string>
+    <string name="btn_cancel_sale">Cancelar Venta</string>
+</resources>
